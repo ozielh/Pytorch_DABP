@@ -5,7 +5,8 @@ import torch
 import params
 
 transform = transforms.Compose([transforms.ToTensor(),
-                                transforms.Normalize(mean=(0.1307,), std=(0.3081,))
+                                transforms.Normalize((0.29730626, 0.29918741, 0.27534935),
+                                                     (0.32780124, 0.32292358, 0.32056796)),
                                 ])
 
 mnist_train_dataset = datasets.MNIST(root='data/pytorch/MNIST', train=True, download=True,

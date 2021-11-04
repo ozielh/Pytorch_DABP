@@ -61,6 +61,9 @@ def save_model(encoder, classifier, discriminator, training_mode, save_name):
     torch.save(encoder.state_dict(), 'trained_models/encoder_' + str(training_mode) + '_' + str(save_name) + '.pt')
     torch.save(classifier.state_dict(), 'trained_models/classifier_' + str(training_mode) + '_' + str(save_name) + '.pt')
 
+    if training_mode == 'dann':
+        torch.save(discriminator.state_dict(), 'trained_models/discriminator_' + str(training_mode) + '_' + str(save_name) + '.pt')
+
     print('Model is saved !!!')
 
 
@@ -210,3 +213,10 @@ def get_free_gpu():
     os.system('nvidia-smi -q -d Memory |grep -A4 GPU|grep Free >tmp')
     memory_available = [int(x.split()[2]) for x in open('tmp', 'r').readlines()]
     return np.argmax(memory_available)
+
+def set_model_mode(mode='train', models=None):
+    for model in models:
+        if mode == 'train':
+            model.train()
+        else:
+            model.eval()

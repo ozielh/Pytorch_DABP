@@ -1,3 +1,3 @@
 batch_size = 32
-epochs = 3  # Change your epochs here
+epochs = 100
 num_workers = 4

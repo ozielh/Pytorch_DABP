@@ -1,12 +1,11 @@
 import torch
 import train
-import test
 import mnist
 import mnistm
 import model
-from utils import get_free_gpu, visualize, visualize_input
+from utils import get_free_gpu
 
-save_name = 'exp'
+save_name = 'omg'
 
 
 def main():
@@ -20,8 +19,8 @@ def main():
         classifier = model.Classifier().cuda()
         discriminator = model.Discriminator().cuda()
 
-        train.source_only(encoder, classifier, discriminator, source_train_loader, target_train_loader, save_name)
-        test.tester(encoder, classifier, discriminator, source_train_loader, target_train_loader, 'source')
+        train.source_only(encoder, classifier, source_train_loader, target_train_loader, save_name)
+        train.dann(encoder, classifier, discriminator, source_train_loader, target_train_loader, save_name)
 
     else:
         print("There is no GPU -_-!")
