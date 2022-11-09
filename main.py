@@ -6,6 +6,8 @@ import model
 from utils import get_free_gpu, visualize_input
 
 save_name = 'omg'
+save_name_dann = 'dann'
+
 
 
 def main():
@@ -21,7 +23,7 @@ def main():
         # 1 Original MNIST and MNIST-M inputs
         visualize_input()
         train.source_only(encoder, classifier, source_train_loader, target_train_loader, save_name)
-        train.dann(encoder, classifier, discriminator, source_train_loader, target_train_loader, save_name)
+        train.dann(encoder, classifier, discriminator, source_train_loader, target_train_loader, save_name_dann)
 
     else:
         print("There is no GPU -_-!")
