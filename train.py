@@ -54,6 +54,7 @@ def source_only(encoder, classifier, source_train_loader, target_train_loader, s
 
         if (epoch + 1) % 10 == 0:
             test.tester(encoder, classifier, None, source_test_loader, target_test_loader, training_mode='source_only')
+    #(2) After DABP using source only       
     save_model(encoder, classifier, None, 'source', save_name)
     visualize(encoder, 'source', save_name)
 
@@ -121,5 +122,6 @@ def dann(encoder, classifier, discriminator, source_train_loader, target_train_l
         if (epoch + 1) % 10 == 0:
             test.tester(encoder, classifier, discriminator, source_test_loader, target_test_loader, training_mode='dann')
 
-    save_model(encoder, classifier, discriminator, 'source', save_name)
-    visualize(encoder, 'source', save_name)
+#(3) After DABP using dann
+    save_model(encoder, classifier, discriminator, 'dann', save_name)
+    visualize(encoder, 'dann', save_name)
